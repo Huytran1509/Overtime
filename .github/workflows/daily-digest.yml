@@ -1,0 +1,39 @@
+name: Daily Sports Digest
+
+on:
+  schedule:
+    # 23:00 UTC ≈ 06:00 sáng giờ Việt Nam (UTC+7)
+    - cron: "0 23 * * *"
+  workflow_dispatch: {} # cho phép bấm chạy tay từ tab Actions
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lay code ve
+        uses: actions/checkout@v4
+
+      - name: Cai dat Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Tao ban tin
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-digest.mjs
+
+      - name: Luu va day len GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "overtime 4/src/content"
+          if git diff --staged --quiet; then
+            echo "Khong co bai moi de luu."
+          else
+            git commit -m "Ban tin the thao tu dong ($(date -u +%Y-%m-%d))"
+            git push
+          fi
