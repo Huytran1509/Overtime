@@ -61,10 +61,17 @@ export function coverFor(category: string): string {
   const map: Record<string, string> = {
     Football:
       'radial-gradient(90% 80% at 70% 15%, rgba(242,165,60,.55), transparent 55%), linear-gradient(160deg,#1a2433,#0c121b)',
-    Athletics:
-      'radial-gradient(85% 80% at 25% 20%, rgba(92,115,133,.6), transparent 55%), linear-gradient(160deg,#13202a,#0a0f16)',
+    Badminton:
+      'radial-gradient(85% 80% at 30% 20%, rgba(80,200,180,.5), transparent 55%), linear-gradient(160deg,#102420,#0a0f12)',
     Tennis:
       'radial-gradient(90% 80% at 60% 85%, rgba(45,160,120,.5), transparent 55%), linear-gradient(160deg,#10231d,#0a0f12)',
+    Esports:
+      'radial-gradient(85% 80% at 25% 20%, rgba(140,90,235,.55), transparent 55%), linear-gradient(160deg,#1a1430,#0b0a14)',
+    Trending:
+      'radial-gradient(90% 80% at 75% 20%, rgba(226,96,58,.55), transparent 55%), linear-gradient(160deg,#241a22,#0d1119)',
+    // older sample-story categories (kept so they still look right)
+    Athletics:
+      'radial-gradient(85% 80% at 25% 20%, rgba(92,115,133,.6), transparent 55%), linear-gradient(160deg,#13202a,#0a0f16)',
     Culture:
       'radial-gradient(85% 80% at 30% 25%, rgba(160,90,200,.45), transparent 55%), linear-gradient(160deg,#1d1626,#0d0a14)',
     Training:
